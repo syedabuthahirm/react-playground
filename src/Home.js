@@ -3,6 +3,8 @@ import TextField from "@material-ui/core/TextField";
 import { connect } from "react-redux";
 import { Link, Element, scroller } from "react-scroll";
 
+import AutoSelect from "./AutoSelect";
+
 import { addNotes, updateNotes } from "./store/reducers/textInput";
 class Home extends Component {
   state = {
@@ -26,57 +28,22 @@ class Home extends Component {
     const { inputReducer } = this.props;
     const inputValue = [...inputReducer.input.notes].join(`\n`);
     const { activeScrollIndex } = this.state;
+    const selectedValue = {
+      label: "Pick a really long name",
+      value: "Pick a really long name"
+    }
     return (
-      <div>
-        <div style={{ margin: '20px 10px 120px 20px' }}>
-          <TextField
-            value={inputValue}
-            onChange={this.onChange}
-            multiline={true}
-            onKeyDown={this.keyPress}
-          />
-        </div>
-
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "200px auto",
-            gridGap: 10,
-            overflow: "hidden"
-          }}
-        >
-          <div style={{ height: "100%", overflow: "hidden" }}>
-            <div
-              onClick={this.scrollTo("test1")}
-              className={activeScrollIndex === "test1" ? "active" : ""}
-            >
-              Test 1
-            </div>
-            <div
-              onClick={this.scrollTo("test2")}
-              className={activeScrollIndex === "test2" ? "active" : ""}
-            >
-              Test 2 (delay)
-            </div>
-            <div
-              onClick={this.scrollTo("test3")}
-              className={activeScrollIndex === "test3" ? "active" : ""}
-            >
-              Test 6 (anchor)
-            </div>
-          </div>
-          <div>
-            <Element name="test1" className="element">
-              <div style={{ height: "200px" }}>container</div>
-            </Element>
-            <Element name="test2" className="element">
-              <div style={{ height: "200px" }}>container</div>
-            </Element>
-            <Element name="test3" className="element">
-              <div style={{ height: "200px" }}>container</div>
-            </Element>
-          </div>
-        </div>
+      <div style={{ width: 200 }}>
+        <AutoSelect
+          options={[
+            {
+              label: "Pick a really long name",
+              value: "Pick a really long name"
+            }
+          ]}
+          value={selectedValue}
+          onChange={() => console.warn('clicked')}
+        />
       </div>
     );
   }
