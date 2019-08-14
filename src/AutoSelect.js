@@ -19,7 +19,7 @@ const useStyles = makeStyles(theme => ({
   },
   valueContainer: {
     display: 'flex',
-    flexWrap: 'wrap',
+    // flexWrap: 'wrap',
     flex: 1,
     alignItems: 'center',
     overflow: 'hidden',
