@@ -1,18 +1,14 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import Todo from "./Todo";
 
 export default class About extends Component {
-  homeOnClick() {
-    console.log("Home On Click");
-  }
   render() {
     return (
       <React.Fragment>
-        <div>Home</div>
+        <h1 className="tracking">Home Tracking</h1>
         <Link to="/about">About</Link>
-        <button className="tracking" onClick={this.homeOnClick} data-id="Home">
-          Home Button
-        </button>
+        <Todo />
       </React.Fragment>
     );
   }
