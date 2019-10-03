@@ -16,7 +16,8 @@
     "react-select": "3.0.4",
     "react-slider": "0.11.2",
     "react-tracker": "^0.0.8",
-    "redux": "4.0.1"
+    "redux": "4.0.1",
+    "redux-thunk": "2.3.0"
   },
   "scripts": {
     "start": "react-scripts start",

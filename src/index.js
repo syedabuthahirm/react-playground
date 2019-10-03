@@ -1,16 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import App from "./react-tracker/Dashboard";
-import "./index.css";
-
-import { TrackerProvider, Tracker } from "react-tracker";
-import trackAddToCart from "./react-tracker/tracking/listeners/dashboard";
-
-const tracker = new Tracker([trackAddToCart]);
+import App from "./react-timeout";
+import { Provider } from "react-redux";
+import store from "./store";
 
 ReactDOM.render(
-  <TrackerProvider tracker={tracker}>
+  <Provider store={store}>
     <App />
-  </TrackerProvider>,
+  </Provider>,
   document.getElementById("root")
 );
