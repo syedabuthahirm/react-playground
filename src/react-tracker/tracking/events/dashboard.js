@@ -17,3 +17,13 @@ export function getRemoveToCartEvent(id, price) {
     }
   };
 }
+
+export function inputOnChange(value, label) {
+  return {
+    type: "INPUT_ONCHANGE",
+    data: {
+      value,
+      label
+    }
+  };
+}

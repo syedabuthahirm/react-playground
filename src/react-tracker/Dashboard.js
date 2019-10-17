@@ -22,10 +22,12 @@ import { mainListItems, secondaryListItems } from "./listItems";
 import Deposits from "./Deposits";
 import Orders from "./Orders";
 
+import CustomTextField from "./Input";
 import { withTracking } from "react-tracker";
 import {
   getAddToCartEvent,
-  getRemoveToCartEvent
+  getRemoveToCartEvent,
+  inputOnChange
 } from "./tracking/events/dashboard";
 
 const drawerWidth = 240;
@@ -112,6 +114,10 @@ const useStyles = makeStyles(theme => ({
 function Dashboard(props) {
   const classes = useStyles();
   const [open, setOpen] = React.useState(true);
+  const [inputValue, setInputValue] = React.useState("Custom Input");
+  const onChange = e => {
+    setInputValue(e.target.value);
+  };
   console.log(props, "props");
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -120,6 +126,10 @@ function Dashboard(props) {
     setOpen(false);
   };
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
+
+  const trackInput = e => {
+    props.trackingInput(e.target.value, e.target.name);
+  };
 
   return (
     <div className={classes.root}>
@@ -187,6 +197,13 @@ function Dashboard(props) {
               <Button onClick={() => props.trackRemoveToCart("2", 40)}>
                 Remove to Cart
               </Button>
+              <CustomTextField
+                variant="outlined"
+                value={inputValue}
+                onChange={onChange}
+                onBlur={trackInput}
+                name="Custom Input"
+              />
             </Grid>
             {/* Recent Deposits */}
             <Grid item xs={12} md={4} lg={3}>
@@ -214,6 +231,9 @@ const mapTrackingToProps = trackEvent => {
     },
     trackRemoveToCart: (id, price) => {
       trackEvent(getRemoveToCartEvent(id, price));
+    },
+    trackingInput: (value, label) => {
+      trackEvent(inputOnChange(value, label));
     }
   };
 };
