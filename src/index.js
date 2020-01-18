@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import Root from "./react-indexdb";
+import Root from "./react-popupwindow";
 import { Provider } from "react-redux";
 import store from "./store";
 
