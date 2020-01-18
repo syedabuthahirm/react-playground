@@ -6,10 +6,10 @@ export default function TodoList(props) {
     <ul>
       {todos.map(todo => {
         return (
-          <li key={todo.id}>
+          <li key={todo.un_id}>
             {todo.name}
-            <button onClick={() => updateTodo(todo.id)}>Update</button>
-            <button onClick={() => removeTodo(todo.id)}>Delete</button>
+            <button onClick={() => updateTodo(todo.un_id)}>Update</button>
+            <button onClick={() => removeTodo(todo.un_id)}>Delete</button>
           </li>
         );
       })}
